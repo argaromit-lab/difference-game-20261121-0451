@@ -1,0 +1,7 @@
+.env
+.env.*
+.makefun-kit/
+node_modules/
+out/
+opencode-images/
+*.log

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#edf4f7">
+  <meta name="description" content="A spot-the-difference journey through three little impossible worlds. Find 27 hidden changes, one small discovery at a time.">
+  <title>Little Elsewhere · Spot the difference</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 13Q13 8 20 13Q28 8 35 13V31Q27 27 20 32Q12 27 5 31Z" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M20 14V30M11 4L13 8M27 3L25 8M20 1V7" fill="none" stroke="currentColor" stroke-width="2"/></svg><div><h1>Little Elsewhere</h1><p>A spot-the-difference journey</p></div></div>
+      <nav class="worlds" aria-label="Choose a chapter"></nav>
+      <div class="settings"><button id="sound" class="icon-button" aria-label="Turn sound on" title="Sound">♪</button><button id="help" class="icon-button" aria-label="How to play" title="How to play">?</button></div>
+    </header>
+    <section class="chapter" aria-labelledby="scene-name">
+      <div class="chapter-title"><span id="chapter-number">Chapter 1 of 3</span><h2 id="scene-name">The Cloudpost Cottage</h2><p id="scene-story">Somewhere above the weather, the mail has gone a little astray.</p></div>
+      <div class="hunt-status"><div class="remaining"><strong id="remaining">7</strong><span>differences<br>left to find</span></div><div class="clock"><span id="timer-label">Time left</span><strong id="timer">03:00</strong><button id="pause" aria-label="Pause game">Ⅱ</button></div></div>
+    </section>
+    <div class="time-track" aria-hidden="true"><div id="time-fill"></div></div>
+    <section class="pictures" aria-label="Find the differences in these two pictures">
+      <figure><figcaption><span><b>A</b> The original</span><span>Look closely.</span></figcaption><div id="original" class="scene" tabindex="0" role="application" aria-label="Original picture. Arrow keys move the pointer, Enter marks a difference."></div></figure>
+      <figure><figcaption><span><b>B</b> A little different</span><span>Click either picture.</span></figcaption><div id="changed" class="scene" tabindex="0" role="application" aria-label="Changed picture. Arrow keys move the pointer, Enter marks a difference."></div></figure>
+    </section>
+    <section class="toolbelt" aria-label="Hunt controls">
+      <div class="find-progress"><div id="progress-dots" aria-label="Find progress"></div><span id="found-count">0 of 7 found</span></div>
+      <div class="tools"><button id="hint" class="hint-button"><span class="bulb" aria-hidden="true">✧</span> A little hint <span id="hint-count">3</span></button><button id="lens" aria-pressed="false">Magnifier <kbd>L</kbd></button><button id="mode" aria-pressed="false">Relaxed mode</button><button id="restart" class="icon-button" aria-label="Restart this chapter" title="Restart chapter">↻</button></div>
+    </section>
+    <section class="journal" aria-label="Field notes"><span class="journal-label">Your discoveries</span><div id="discoveries"><span class="empty-note">Every little detail has a story. Find your first one.</span></div><span id="score">0 points</span></section>
+    <footer><span>27 hidden changes · 3 impossible places</span><span><kbd>H</kbd> hint <kbd>L</kbd> lens <kbd>Space</kbd> pause <kbd>?</kbd> help</span><span id="save-status">Progress saved on this device</span></footer>
+    <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+  </main>
+  <div id="toast" role="status"></div>
+  <dialog id="modal"><button id="close-modal" class="close-modal" aria-label="Close dialog">×</button><div id="modal-content"></div></dialog>
+  <script type="module" src="hunt.js"></script>
+</body>
+</html>
