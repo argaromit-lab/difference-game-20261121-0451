@@ -23,7 +23,7 @@ function cat(x,y,s=1,scarf='#d46a5d',sleep=false){let b=path('M-23 17Q-66 25 -51
 function envelope(x,y,s=1,seal=true){return group(x,y,s,rect(-23,-15,46,30,'#f9efd4',3,ink)+path('M-23 -15L0 4L23 -15M-22 14L-7 -1M22 14L7 -1','none','#b18c6b',1.4)+(seal?circle(0,1,5,'#d77764'):''),-12);}
 function detailsGround(){let b='';for(let i=0;i<85;i++){let x=90+(i*97)%737,y=470+(i*41)%125;b+=path(`M${x} ${y}q-5 -12 -10 -9m10 9q0 -15 5 -17`,'none',i%3?'#477d68':'#99b18a',1.3);}for(let i=0;i<30;i++){let x=115+(i*53)%650,y=480+(i*29)%120;b+=ellipse(x,y,3,1.5,'#e3ce9c');}return b;}
 function island(){return ellipse(461,632,287,25,'#496b6e15')+path('M86 470Q137 397 302 417Q433 384 604 421Q750 408 819 483L750 570L630 628L448 651L296 618L164 558Z','url(#__rock)',ink,2)+path('M91 475L180 554L306 584L356 623M235 470L256 551L296 594M760 478L686 561L630 619M602 482L580 553L527 639','none','#304f583f',3)+path('M86 470Q150 402 300 421Q449 391 606 425Q761 409 819 483Q738 557 555 562Q409 600 224 543Q128 529 86 470Z','url(#__grass)',ink,2)+path('M100 477Q235 550 388 558Q638 584 805 486','none','#8faf7e',7);}
-function windowRound(x,y,s=1,changed=false){let b=circle(0,0,40,'#e8b778',ink,3)+circle(0,0,32,'url(#__window)',ink,2)+path('M-31 0H31M0 -31V31','none','#7a6b59',4)+circle(0,0,10,changed?'#69a2a0':'#e3a668',ink,1.5);b+=path('M-18 -23L-24 -17M15 -24L22 -17','none','#fff5cc',3);return group(x,y,s,b);}
+function windowRound(x,y,s=1){let b=circle(0,0,40,'#e8b778',ink,3)+circle(0,0,32,'url(#__window)',ink,2)+path('M-31 0H31M0 -31V31','none','#7a6b59',4)+circle(0,0,10,'#e3a668',ink,1.5);b+=path('M-18 -23L-24 -17M15 -24L22 -17','none','#fff5cc',3);return group(x,y,s,b);}
 function cottage(c){let b=cloud(89,273,1.2,.5)+cloud(777,110,1.1,.65)+cloud(760,345,1.8,.48)+cloud(185,53,.9,.55);b+=circle(745,86,48,'#fff4cc80')+circle(745,86,36,'#ffe5a0');b+=group(135,145,1,path('M0 -72C-57 -72 -66 -19 -24 28L24 28C66 -19 57 -72 0 -72Z','url(#__balloon)',ink,2)+path('M-16 -68Q-37 -22 -12 27M16 -68Q37 -22 12 27','none','#fff0b470',3)+line(-22,28,-15,65,'#7e8370')+line(22,28,15,65,'#7e8370')+path('M-23 61H23L17 83H-17Z','#a27952',ink,2)+line(-19,68,19,68,'#e5c397',2)+(c?star(0,-26,14,'#f8e4ad'):circle(0,-26,13,'#f8e4ad')));b+=bird(280,106,.7)+bird(713,224,.65)+bird(683,243,.45);b+=island();
  b+=path('M305 467Q365 460 410 477Q485 515 564 538L541 558Q427 522 376 503Q334 483 285 487Z','#e6d4aa',ink,1.2);
  b+=ellipse(442,461,206,39,'#30524735')+path('M265 236L437 181L605 241V440Q432 507 265 439Z','url(#__wall)',ink,3)+path('M438 185L605 241V440L438 473Z','#d9bb8c',ink,2);
@@ -83,7 +83,7 @@ function sea(c){let b='';for(let i=0;i<9;i++){const x=30+i*111;b+=path(`M${x} 0L
  b+=group(265,586,.8,rect(-37,-18,74,36,'#9c9473',4,ink)+path('M-37 -9H37M-20 -18V18M20 -18V18','none','#d1bd8e',3)+rect(-7,-9,14,15,'#e4ce91',3,ink)+circle(0,-2,2,ink));
  for(let i=0;i<45;i++){let x=52+(i*79)%807,y=543+(i*31)%104;b+=ellipse(x,y,3+i%3,1.5,'#a7a984');}b+=star(446,600,16,'#d5a17e')+star(671,602,11,'#d5a17e')+mushroom(91,588,.6,'#c9a0a2');return b;
 }
-export function sceneMarkup(index,changed=false,prefix='art'){
+export function renderOriginalWorld(index,changed=false,prefix='art'){
  const sky=['#badfe2','#3e5d76','#377f89'][index],sky2=['#edf0d1','#849695','#96c6b4'][index];
  const defs=`<defs>
  <linearGradient id="__sky" x2="0" y2="1"><stop stop-color="${sky}"/><stop offset="1" stop-color="${sky2}"/></linearGradient>
@@ -103,7 +103,9 @@ export function sceneMarkup(index,changed=false,prefix='art'){
  <radialGradient id="__glow"><stop stop-color="#f5cc80" stop-opacity=".36"/><stop offset="1" stop-color="#f5cc80" stop-opacity="0"/></radialGradient>
  <filter id="__grain"><feTurbulence type="fractalNoise" baseFrequency=".55" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".07"/></feComponentTransfer><feBlend in="SourceGraphic" mode="soft-light"/></filter>
  </defs>`;
- let body=[cottage,tea,sea][index](changed);
+  let body=[cottage,tea,sea][index](changed);
+  if(index===0&&changed)body=body.replaceAll('url(#__door)','#b65f4c');
  // SVG gradients use unit coordinates; the paper grain is a final light veil.
- return (`<svg viewBox="0 0 900 680" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${defs}${rect(0,0,900,680,'url(#__sky)')}${body}<rect width="900" height="680" opacity=".3" filter="url(#__grain)" fill="transparent"/></svg>`).replaceAll('__',prefix+'-');
+  const tonedDefs=index===0&&changed?defs.replaceAll('#eea184','#82b5b6').replaceAll('#f6c39b','#b4d5cc').replaceAll('#d98e79','#548d95'):defs;
+  return (`<svg viewBox="0 0 900 680" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${tonedDefs}${rect(0,0,900,680,'url(#__sky)')}${body}</svg>`).replaceAll('__',prefix+'-');
 }

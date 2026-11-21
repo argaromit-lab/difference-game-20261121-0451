@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#edf4f7">
-  <meta name="description" content="A spot-the-difference journey through three little impossible worlds. Find 27 hidden changes, one small discovery at a time.">
+  <meta name="description" content="Six original storybook worlds, 54 hidden changes, and a little discovery around every corner.">
   <title>Little Elsewhere · Spot the difference</title>
   <link rel="icon" href="data:,">
   <style>:root{--ink:#243c48;--muted:#516874;--paper:#fff;--cloud:#edf4f7;--teal:#237d83;--coral:#cf594b;--line:#cbdce2;--gold:#e7bb62;font-family:"Trebuchet MS","Segoe UI",sans-serif;color:var(--ink);background:var(--cloud);font-synthesis:none}
@@ -19,6 +19,11 @@ transition:transform .3s linear;transform-origin:left
 
 .scene{aspect-ratio:auto;max-height:none}.scene>svg{height:auto}
 @media(max-width:700px){.tools{flex-wrap:wrap;justify-content:flex-start}.tools button{flex:1 1 auto}.tools .icon-button{flex:0 0 36px}}
+.remaining{background:#1e293b;color:#fff8e8;border-radius:14px;padding:10px 18px;gap:13px;min-width:265px}.remaining strong{font-size:52px;color:#f6d48d}.remaining span{font-size:24px;line-height:1.12;font-weight:800}.remaining small{font-size:23px;color:#fff8e8;font-weight:700;margin-top:5px}.marker{border:4px solid #fff8e8;outline:4px solid #e11d48;outline-offset:0;filter:drop-shadow(0 2px 2px #243c4855)}.marker:after{background:#e11d48;width:20px;height:20px;font-size:13px;line-height:20px;right:-9px;top:-10px}.chapter{gap:16px}.chapter-title p{max-width:560px}.hint-region{outline:3px dashed #ffe5a0}
+@media(max-width:1000px) and (min-width:701px){.remaining{min-width:240px;padding:10px 14px}.hunt-status{gap:10px}.clock{padding-left:12px}}
+@media(max-width:700px){.chapter{flex-wrap:wrap}.chapter-title{width:100%}.hunt-status{width:100%;justify-content:space-between}.remaining{min-width:0;flex:1;padding:10px 16px}.remaining strong{font-size:44px}.remaining span{font-size:24px}.remaining small{font-size:23px}.clock{display:grid;padding-left:12px}.marker{border-width:3px;outline-width:3px}.marker:after{width:14px;height:14px;font-size:11px;line-height:14px;right:-8px;top:-8px}}
+.topbar{flex-wrap:wrap;height:auto;min-height:116px;gap:10px;padding:15px 0 10px}.settings{margin-left:auto}.worlds{order:3;width:100%;justify-content:space-between}.worlds button{flex:1;justify-content:center;padding:6px 8px}.worlds .chapter-icon{width:24px;height:24px;font-size:14px}.worlds small{font-size:11px}.brand p{font-size:13px}#sound{width:auto;font-size:12px;padding:8px 12px}.chapter{padding:14px 0 12px}.chapter-title p{font-size:13px}.toolbelt{padding:12px 0}.tools kbd{font-size:11px}.hint-button kbd{background:#fff8e8;color:#245258}.clock{padding-left:15px}.remaining{min-width:290px}.remaining span{font-size:26px}.remaining small{font-size:24px}.scene{border-radius:12px}.journal{min-height:46px}.worlds button.active{background:#fff8e8}.marker{filter:drop-shadow(0 2px 1px #243c4844)}
+@media(max-width:700px){.worlds{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}.worlds button{font-size:11px;min-height:34px;padding:4px}.worlds .chapter-icon{display:none}.topbar{padding-top:12px}.remaining{min-width:0}.remaining span{font-size:24px}.remaining small{font-size:23px}.tools kbd{display:inline}.pictures{gap:7px}.clock strong{font-size:24px}}
 </style>
 <style id="gesso-text-wrap">h1,h2,h3{text-wrap:balance}p,li,figcaption,blockquote{text-wrap:pretty}</style>
 <style id="gesso-font-smoothing">html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}</style>
@@ -26,7 +31,7 @@ transition:transform .3s linear;transform-origin:left
 <body>
   <main class="shell">
     <header class="topbar">
-      <div class="brand"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 13Q13 8 20 13Q28 8 35 13V31Q27 27 20 32Q12 27 5 31Z" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M20 14V30M11 4L13 8M27 3L25 8M20 1V7" fill="none" stroke="currentColor" stroke-width="2"/></svg><div><h1>Little Elsewhere</h1><p>A spot-the-difference journey</p></div></div>
+      <div class="brand"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 13Q13 8 20 13Q28 8 35 13V31Q27 27 20 32Q12 27 5 31Z" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M20 14V30M11 4L13 8M27 3L25 8M20 1V7" fill="none" stroke="currentColor" stroke-width="2"/></svg><div><h1>Little Elsewhere</h1><p>Six worlds. A closer look.</p></div></div>
       <nav class="worlds" aria-label="Choose a chapter"></nav>
       <div class="settings"><button id="sound" class="icon-button" aria-label="Turn sound on" title="Sound">♪</button><button id="help" class="icon-button" aria-label="How to play" title="How to play">?</button></div>
     </header>
@@ -41,14 +46,14 @@ transition:transform .3s linear;transform-origin:left
     </section>
     <section class="toolbelt" aria-label="Hunt controls">
       <div class="find-progress"><div id="progress-dots" aria-label="Find progress"></div><span id="found-count">0 of 7 found</span></div>
-      <div class="tools"><button id="hint" class="hint-button"><span class="bulb" aria-hidden="true">✧</span> A little hint <span id="hint-count">3</span></button><button id="lens" aria-pressed="false">Magnifier <kbd>L</kbd></button><button id="mode" aria-pressed="false">Relaxed mode</button><button id="restart" class="icon-button" aria-label="Restart this chapter" title="Restart chapter">↻</button></div>
+      <div class="tools"><button id="hint" class="hint-button"><span class="bulb" aria-hidden="true">✧</span> A little hint <kbd>H</kbd><span id="hint-count">3</span></button><button id="lens" aria-pressed="false">Magnifier <kbd>M</kbd></button><button id="mode" aria-pressed="false">Relaxed mode <kbd>R</kbd></button><button id="restart" class="icon-button" aria-label="Restart this chapter" title="Restart chapter">↻</button></div>
     </section>
     <section class="journal" aria-label="Field notes"><span class="journal-label">Your discoveries</span><div id="discoveries"><span class="empty-note">Every little detail has a story. Find your first one.</span></div><span id="score">0 points</span></section>
-    <footer><span>27 hidden changes · 3 impossible places</span><span><kbd>H</kbd> hint <kbd>L</kbd> lens <kbd>Space</kbd> pause <kbd>?</kbd> help</span><span id="save-status">Progress saved on this device</span></footer>
+    <footer><span>54 hidden changes · 6 illustrated worlds</span><span><kbd>↑ ↓ ← →</kbd> move <kbd>Enter / Space</kbd> mark <kbd>P</kbd> pause <kbd>1–6</kbd> chapter</span><span id="save-status">Progress saved on this device</span></footer>
     <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
   </main>
   <div id="toast" role="status"></div>
   <dialog id="modal"><button id="close-modal" class="close-modal" aria-label="Close dialog">×</button><div id="modal-content"></div></dialog>
-  <script type="module" src="hunt.js"></script>
+  <script type="module" src="js/game-controller.js"></script>
 </body>
 </html>
