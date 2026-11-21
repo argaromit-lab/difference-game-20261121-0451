@@ -17,6 +17,6 @@ const dossier=buildDossier(output,{
 });
 if(dossier.length>1572864)throw Error('Dossier exceeds the competition limit.');
 writeFileSync(join(output,'dossier.json'),dossier,{mode:0o644});
-function readable(directory:string){chmodSync(directory,0o755);for(const entry of readdirSync(directory,{withFileTypes:true})){const path=join(directory,entry.name);if(entry.isDirectory())readable(path);else chmodSync(path,0o644);}}
+function readable(directory:string){for(const entry of readdirSync(directory,{withFileTypes:true})){const path=join(directory,entry.name);if(entry.isDirectory()){chmodSync(path,0o755);readable(path);}else chmodSync(path,0o644);}}
 readable(output);
 console.log(`Little Elsewhere: game, screenshots and deterministic dossier (${dossier.length} bytes) ready.`);
