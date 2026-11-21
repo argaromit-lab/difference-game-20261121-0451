@@ -23,7 +23,7 @@ export const chapters=[
  {name:'The Tideglass Observatory',short:'Tideglass',subtitle:'Beneath the quiet sea, even the stars have their secrets.',time:240,difficulty:'Keen-eyed · 11 changes',symbol:'3',features:[
   {x:165,y:133,r:29,name:'Golden fish',clue:'Something is swimming in the upper-left water.'},
   {x:696,y:124,r:26,name:'Fish stripes',clue:'Count the stripes on the upper-right fish.'},
-  {x:476,y:329,r:48,name:'Telescope angle',clue:'Which way is the telescope looking?'},
+  {x:450,y:345,r:96,name:'Telescope angle',clue:'Which way is the telescope looking?'},
   {x:337,y:377,r:29,name:'Wave chart',clue:'Inspect the wave chart inside the dome.'},
   {x:573,y:341,r:22,name:'Specimen shape',clue:'The specimen on the right has changed its shape.'},
   {x:450,y:201,r:22,name:'Clock hands',clue:'What time is it under the glass roof?'},
