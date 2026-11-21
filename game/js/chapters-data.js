@@ -48,11 +48,11 @@ export const chapters=[
   {x:165,y:278,r:34,name:'Lighthouse lamp',clue:'Look at the top of the lighthouse.'},
   {x:505,y:552,r:38,name:'Harbour cat',clue:'The cat wears a different scarf.'},
   {x:735,y:511,r:39,name:'Life ring',clue:'Check the life ring on the dock.'},
-  {x:686,y:133,r:62,name:'Seabird',clue:'A large bird is passing through the sky.'},
+  {x:686,y:133,r:73,kind:'absence',name:'Missing seabird',clue:'Is the large seabird in both skies?'},
   {x:448,y:285,r:137,name:'Boathouse roof',clue:'Study the boathouse roof.'},
   {x:627,y:406,r:67,name:'Sailing boat',clue:'The boat has a different sail.'},
   {x:280,y:538,r:33,name:'Crate stamp',clue:'The crate carries a curious stamp.'},
-  {x:400,y:438,r:34,name:'Harbour pennant',clue:'Look at the flag by the dock.'},
+  {x:400,y:415,r:47,kind:'orientation',name:'Harbour pennant',clue:'Which way is the dock’s pennant pointing?'},
   {x:818,y:397,r:35,name:'Floating buoy',clue:'Something is bobbing at the far right.'}
  ]},
  {name:'The Amberleaf Library',short:'Amberleaf',subtitle:'Rain at the window. Tea by the fire. Nine stories slightly changed.',time:255,difficulty:'Keen-eyed · 9 changes',features:[
@@ -61,10 +61,10 @@ export const chapters=[
   {x:340,y:552,r:38,name:'Library cat',clue:'The librarian’s scarf seems different.'},
   {x:580,y:202,r:59,name:'Window moon',clue:'Look at the moon through the arched window.'},
   {x:552,y:453,r:103,name:'Reading armchair',clue:'Study the big armchair’s upholstery.'},
-  {x:319,y:320,r:36,name:'Botanical book',clue:'Look at the broad book on the middle shelf.'},
+  {x:319,y:315,r:43,kind:'silhouette',name:'Open botanical book',clue:'Is the broad botanical book open or closed?'},
   {x:167,y:407,r:35,name:'Fireplace ornament',clue:'A little tile sits above the fireplace.'},
   {x:744,y:551,r:40,name:'Tea and biscuits',clue:'Count the biscuits beside the teacup.'},
-  {x:470,y:591,r:35,name:'Paper bookmark',clue:'There is a bookmark on the rug.'}
+  {x:470,y:591,r:35,kind:'silhouette',name:'Notched bookmark',clue:'Look at the cut at the end of the bookmark.'}
  ]}
 ];
 export const totalDifferences=chapters.reduce((n,c)=>n+c.features.length,0);

@@ -6,6 +6,8 @@
 
 A spot-the-difference journey through six original illustrated worlds. Visit a cottage above the weather, a moonlit teahouse, an observatory beneath the sea, a botanical glasshouse, an apricot-coloured harbour, and an old library. Find 54 changes with paired coral discovery rings, a field journal and original procedural audio.
 
+The harbour and library combine original layered light, material details and grounded shadows with varied object puzzles: a missing seabird, a reversed pennant, an open book and a notched bookmark sit alongside colour, count and shape changes. Every difference has an authored hit region and a scene-specific hint.
+
 ## Run it
 
 Node.js 22.18 or later. No installation or build step is needed.
